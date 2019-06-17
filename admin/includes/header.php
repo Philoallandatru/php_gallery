@@ -1,3 +1,14 @@
+<?php ob_start(); ?>
+<?php include("init.php"); # no problem with this path name? ?>
+
+<?php
+//if (!$session->is_signed_in()) {
+//    header("login.php");
+//}
+
+?>
+
+
 <!DOCTYPE html>
 <html lang="en">
 

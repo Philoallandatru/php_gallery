@@ -1,0 +1,47 @@
+<?php
+/**
+ * Created by PhpStorm.
+ * User: root1
+ * Date: 2019-06-17
+ * Time: 17:17
+ */
+
+class Session {
+    private $signed_in = false;
+    public $user_id;
+
+    function __construct() {
+        session_start();
+        $this->check_the_login();
+    }
+
+    public function is_signed_in() {
+        return $this->signed_in;
+    }
+
+    public function check_the_login() {
+        if (isset($_SESSION['user_id'])) {
+            $this->user_id = $_SESSION['user_id'];
+            $this->signed_in = true;
+        } else {
+            unset($this->user_id);
+            $this->signed_in = false;
+        }
+    }
+
+    public function login($user) {
+        if ($user) {
+            $this->user_id = $_SESSION['user_id'] = $user->id;
+            $this->signed_in = true;
+        }
+    }
+
+    public function logout($user) {
+        unset( $_SESSION['user_id'] );
+        unset($user->user_id);
+    }
+
+}
+
+
+$session = new Session();
