@@ -20,13 +20,6 @@ class User {
 
     public static function find_user_by_id($user_id) {
         $the_result_array =  self::find_this_query("SELECT * FROM users WHERE id = '$user_id'");
-//        if (!empty($the_result_array)) {
-//            $first_item = array_shift($the_result_array);
-//            return $first_item;
-//        } else {
-//            return false;
-//        }
-        # array shift gets the first variable
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
 
@@ -51,12 +44,6 @@ class User {
 
     public static function instantiation($the_record) {
         $the_object = new self;
-//        $the_object->password = $the_record['password'];
-//        $the_object->id = $the_record['id'];
-//        $the_object->username = $the_record['username'];
-//        $the_object->lastname = $the_record['lastname'];
-//        $the_object->firstname = $the_record['firstname'];
-//        return $the_object;
         foreach ($the_record as $the_attribute => $value)  {
             if ($the_object->has_the_attribute($the_attribute)) {
                 $the_object->$the_attribute = $value;
@@ -64,6 +51,43 @@ class User {
         }
         return $the_object;
     }
+
+    private function the_insert_id() {
+        return mysqli_insert_id($this->id);
+    }
+
+    public function create() {
+        global $database;
+        $username = $database->escape_string($this->username);
+        $password = $database->escape_string($this->password);
+        $lastname = $database->escape_string($this->lastname);
+        $firstname = $database->escape_string($this->firstname);
+        $sql = "INSERT INTO users (username, password, firstname, lastname) ";
+        $sql .= "VALUES('$username', '$password', '$firstname', '$lastname')";
+        if ($database->query($sql)) {
+            $this->id = $database->the_insert_id();
+            return true;
+        } else {
+            return false;
+        }
+    }
+
+    /**
+     * @param $username
+     * @param $password
+     * @return bool|mixed - if the user information is right, return the array
+     */
+    public static function verify_user($username, $password) {
+        global $database;
+        $username = $database->escape_string($username);
+        $password = $database->escape_string($password);
+        $sql = "SELECT * FROM users WHERE username = '$username' and password = '$password' LIMIT 1";
+
+        $the_result_array =  self::find_this_query($sql);
+        return !empty($the_result_array) ? array_shift($the_result_array) : false;
+    }
+
+
 
 
 }
