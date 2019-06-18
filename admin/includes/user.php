@@ -52,10 +52,15 @@ class User {
         return $the_object;
     }
 
-    private function the_insert_id() {
-        return mysqli_insert_id($this->id);
+    public function save() {
+        
     }
 
+    /**
+     * create user in the database according the attributes in
+     * the instance
+     * @return bool -
+     */
     public function create() {
         global $database;
         $username = $database->escape_string($this->username);
@@ -71,6 +76,35 @@ class User {
             return false;
         }
     }
+
+    /**
+     * update the user information in the database according to
+     * the attributes in the instance
+     * @return bool
+     */
+    public function update() {
+        global $database;
+        $username = $database->escape_string($this->username);
+        $password = $database->escape_string($this->password);
+        $lastname = $database->escape_string($this->lastname);
+        $firstname = $database->escape_string($this->firstname);
+        $id = $database->escape_string($this->id);
+        $sql = "UPDATE users SET username = '$username',";
+        $sql .= "password = '$password', ";
+        $sql .= "firstname = '$firstname', ";
+        $sql .= "lastname = '$lastname' WHERE id = '$id'";
+
+        $database->query($sql);
+        return (mysqli_affected_rows($database->connection) == 1);
+    }
+
+    public function delete() {
+        global $database;
+        $sql = "DELETE from users WHERE id = {$database->escape_string($this->id)} LIMIT 1";
+        $database->query($sql);
+        return (mysqli_affected_rows($database->connection) == 1);
+    }
+
 
     /**
      * @param $username
