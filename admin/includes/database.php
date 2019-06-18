@@ -30,9 +30,15 @@ class Database {
         return $result;
     }
 
+    /**
+     * avoid injection
+     * @param $string
+     * @return string
+     */
     public function escape_string($string) {
-        # return $this->connection->real_escape_string($string);
-        return mysqli_real_escape_string($this->connection, $string);
+        $escape_stirng = mysqli_real_escape_string($this->connection, $string); # avoid sql injection
+        $escape_stirng = htmlentities($escape_stirng); # avoid javascript and html injection
+        return $escape_stirng;
     }
 
     public function the_insert_id() {
