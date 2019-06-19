@@ -20,7 +20,7 @@
 //                $found_user = User::find_by_id(2);
 //                echo $found_user->username;
 //                echo "<hr>";
-
+//
 //                $user = new User();
 //                $user->username = "Ogiso";
 //                $user->password = "Touma";
@@ -49,10 +49,10 @@
 //                $user->username = "hahaha";
 //                $user->create();
 
-                $photo = new Photo();
-                $photo->title = "Just tests";
-                $photo->size = 12;
-                $photo->create();
+//                $photo = new Photo();
+//                $photo->title = "Just tests";
+//                $photo->size = 12;
+//                $photo->create();
 
                 ?>
 

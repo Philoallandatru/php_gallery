@@ -24,7 +24,7 @@
             </ul>
         </li>
         <li class="active">
-            <a href="blank-page.html"><i class="fa fa-fw fa-file"></i> Home Page</a>
+            <a href="photos.php"><i class="fa fa-fw fa-file"></i> Photos</a>
         </li>
         <li>
             <a href="index-rtl.html"><i class="fa fa-fw fa-dashboard"></i> RTL Dashboard</a>

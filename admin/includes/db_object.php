@@ -14,12 +14,26 @@
 
 class Db_object {
 
+    public $tmp_path;
+    public $custom_errors = array(); # your own custom errors
+    public $upload_errors = array (
+        UPLOAD_ERR_OK => "There is no error",
+        UPLOAD_ERR_INI_SIZE => "The uploaded file exceeds the upload max filesize limit",
+        UPLOAD_ERR_FORM_SIZE => "The uploaded file exceeds the max filesize limit",
+        UPLOAD_ERR_PARTIAL => "PARTIAL ERROR",
+        UPLOAD_ERR_PARTIAL => "The uploaded file was only partially uploaded",
+        UPLOAD_ERR_NO_FILE => "No file was uploaded",
+        UPLOAD_ERR_NO_TMP_DIR => "Missing Temporary folder",
+        UPLOAD_ERR_CANT_WRITE => "Failed to write file to disk",
+        UPLOAD_ERR_EXTENSION => "A PHP extension stopped the file upload"
+    );
+
     public static function find_all() {
         return static::find_by_query("SELECT * FROM " .static::$db_table . " ");
     }
 
-    public static function find_by_id($user_id) {
-        $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id = '$user_id'");
+    public static function find_by_id($id) {
+        $the_result_array = static::find_by_query("SELECT * FROM " . static::$db_table . " WHERE id = '$id'");
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
     }
 

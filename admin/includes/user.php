@@ -9,12 +9,75 @@
 
 class User extends Db_object {
     protected static $db_table = "users";
-    protected static $db_table_fields = array('username', 'password', 'firstname', 'lastname');
+    protected static $db_table_fields = array('username', 'password', 'firstname', 'lastname', 'user_image');
     public $id;
     public $username;
     public $password;
     public $firstname;
     public $lastname;
+    public $user_image;
+    public $upload_directory = "images";
+    public $image_placeholder = "http://placehold.it/400x400&text=image";
+
+    public function image_path_and_placeholder() {
+        return empty($this->user_image) ? $this->image_placeholder : $this->upload_directory . DS . $this->user_image;
+    }
+
+    /**
+     * doing some error checking
+     * @param $file - $_FILES['uploaded_file']
+     * @return false if there is error for the file uploading
+     */
+    public function set_file($file) {
+        if (empty($file) || !$file || !is_array($file)) {
+            $this->custom_errors[] = "This was no file uploaded here";
+            return false;
+        } else if ($file['error'] != 0) {
+            $this->custom_errors[] = $this->upload_errors[$file['error']]; # save official errors in your error array
+            return false;
+        } else {
+            $this->user_image = basename($file['name']);
+            $this->tmp_path = $file['tmp_name']; # this is the temporary path that store the file
+            $this->type = $file['type'];
+            $this->size = $file['size'];
+        }
+    }
+
+    /**
+     * @return bool
+     */
+    public function save_user_and_image() {
+        if ($this->id) {
+            $this->update();
+        } else {
+            if (!empty($this->custom_errors)) {
+                return false;
+            }
+            if (empty($this->user_image) || empty($this->tmp_path)) {
+                $this->custom_errors[] = "the file was not available.";
+                return false;
+            }
+            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->user_image;
+
+            if (file_exists($target_path)) {
+                $this->custom_errors[] = "This file '$this->user_image' already exists.";
+                return false;
+            }
+
+            /* move from temporary path to a new path */
+            if (move_uploaded_file($this->tmp_path, $target_path)) {
+                if ($this->create()) {
+                    unset($this->tmp_path);
+                    return true;
+                }
+            } else {
+                $this->custom_errors[] = "The file directory probably doesn't have permissions.";
+                return false;
+            }
+        }
+    }
+
+
 
     /**
      * @param $username
