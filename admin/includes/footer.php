@@ -18,15 +18,17 @@
 
           var data = google.visualization.arrayToDataTable([
               ['Task', 'Hours per Day'],
-              ['Work',     11],
-              ['Eat',      2],
-              ['Commute',  2],
-              ['Watch TV', 2],
-              ['Sleep',    7]
+              ['Views',     <?php echo $session->count; ?>],
+              ['Comments',  <?php echo Comment::count_all(); ?>],
+              ['Users',  <?php echo Photo::count_all(); ?>],
+              ['Photos', <?php echo User::count_all(); ?>],
           ]);
 
           var options = {
-              title: 'My Daily Activities'
+              legend: 'none',
+              backgroundColor: 'transparent',
+              pieSliceText: 'label',
+              title: 'Photo Gallery'
           };
 
           var chart = new google.visualization.PieChart(document.getElementById('piechart'));
@@ -34,6 +36,8 @@
           chart.draw(data, options);
       }
   </script>
+
+
 
 </body>
 

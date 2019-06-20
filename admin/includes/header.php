@@ -30,8 +30,8 @@
         <script src="https://oss.maxcdn.com/libs/respond.js/1.4.2/respond.min.js"></script>
     <![endif]-->
 
-    <script type="text/javascript" src="https://www.google.com/jsapi"></script>
-    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+<!--    <script type="text/javascript" src="https://www.google.com/jsapi"></script>-->
+<!--    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>-->
 
 </head>
 
