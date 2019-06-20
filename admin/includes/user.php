@@ -46,34 +46,28 @@ class User extends Db_object {
     /**
      * @return bool
      */
-    public function save_user_and_image() {
-        if ($this->id) {
-            $this->update();
+    public function upload_photo() {
+        if (!empty($this->custom_errors)) {
+            return false;
+        }
+        if (empty($this->user_image) || empty($this->tmp_path)) {
+            $this->custom_errors[] = "the file was not available.";
+            return false;
+        }
+        $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->user_image;
+
+        if (file_exists($target_path)) {
+            $this->custom_errors[] = "This file '$this->user_image' already exists.";
+            return false;
+        }
+
+        /* move from temporary path to a new path */
+        if (move_uploaded_file($this->tmp_path, $target_path)) {
+            unset($this->tmp_path);
+            return true;
         } else {
-            if (!empty($this->custom_errors)) {
-                return false;
-            }
-            if (empty($this->user_image) || empty($this->tmp_path)) {
-                $this->custom_errors[] = "the file was not available.";
-                return false;
-            }
-            $target_path = SITE_ROOT . DS . 'admin' . DS . $this->upload_directory . DS . $this->user_image;
-
-            if (file_exists($target_path)) {
-                $this->custom_errors[] = "This file '$this->user_image' already exists.";
-                return false;
-            }
-
-            /* move from temporary path to a new path */
-            if (move_uploaded_file($this->tmp_path, $target_path)) {
-                if ($this->create()) {
-                    unset($this->tmp_path);
-                    return true;
-                }
-            } else {
-                $this->custom_errors[] = "The file directory probably doesn't have permissions.";
-                return false;
-            }
+            $this->custom_errors[] = "The file directory probably doesn't have permissions.";
+            return false;
         }
     }
 

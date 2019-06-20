@@ -10,16 +10,16 @@ if (!$session->is_signed_in()) {redirect("login.php");}
 
 # check if the get method is set
 if (empty($_GET['id'])) {
-    redirect("photos.php");
+    redirect("comments.php");
 }
 $id = $_GET['id'];
 
-$photo = Photo::find_by_id($id);
-if ($photo) {
-    $photo->delete_photo();
-    redirect("photos.php");
+$comment = Comment::find_by_id($id);
+if ($comment) {
+    $comment->delete();
+    redirect("comments.php");
 } else {
-    redirect("photos.php");
+    redirect("comments.php");
 }
 
 

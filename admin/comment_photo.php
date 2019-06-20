@@ -2,7 +2,11 @@
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 
 <?php
-$comments = comment::find_all();
+if (empty($_GET['id'])) {
+    redirect("photos.php");
+}
+$comments = Comment::find_the_comments($_GET['id']);
+
 ?>
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
@@ -27,7 +31,6 @@ $comments = comment::find_all();
                     <h1 class="page-header">
                         Comments
                     </h1>
-                    <a class="btn btn-primary" href="add_comment.php">Add Comment</a>
 
                     <div class="col-md-12">
                         <table class="table table-hover">
@@ -46,7 +49,7 @@ $comments = comment::find_all();
                                     <td><?php echo $comment->photo_id; ?></td>
                                     <td><?php echo $comment->author; ?>
                                         <div class="action_link">
-                                            <a href="./delete_comment.php?id=<?php echo $comment->id; ?>">Delete</a>
+                                            <a href="./delete_comment_photo.php?id=<?php echo $comment->id; ?>">Delete</a>
                                             <a href="./edit_comment.php?id=<?php echo $comment->id; ?>">Edit</a>
                                             <a>View</a>
                                         </div>
