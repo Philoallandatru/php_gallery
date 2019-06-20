@@ -10,60 +10,110 @@
                     <small>Subheading</small>
                 </h1>
 
-<!--    Test code  -->
-                <?php
-//                $users = User::find_all();
-//                foreach ($users as $user) {
-//                    echo $user->username . "<br>";
-//                }
+                <div class="row">
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-primary">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-users fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo $session->count; ?></div>
+                                        <div>New Views</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <div>Page View from Gallery</div>
+                                    <span class="pull-left">View Details</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-//                $found_user = User::find_by_id(2);
-//                echo $found_user->username;
-//                echo "<hr>";
-//
-//                $user = new User();
-//                $user->username = "Ogiso";
-//                $user->password = "Touma";
-//                $user->lastname = "Di";
-//                $user->firstname = "Homura";
-//                $user->create();
-//                $user = User::find_by_id(8);
-//                $user->username = "Metsu";
-//                $user->update();
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-green">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-photo fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo Photo::count_all(); ?></div>
+                                        <div>Photos</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Total Photos in Gallery</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-//                echo "User class static method test : <br> : ";
-//                $users = User::find_all();
-//                foreach ($users as $user) {
-//                    echo $user->username .  "<br>";
-//                }
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-yellow">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-user fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php echo User::count_all(); ?></div>
+                                        <div>Users</div>
+                                    </div>
+                                </div>
+                            </div>
+                                <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Total Users</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-                echo "<br><br>";
+                    <div class="col-lg-3 col-md-6">
+                        <div class="panel panel-red">
+                            <div class="panel-heading">
+                                <div class="row">
+                                    <div class="col-xs-3">
+                                        <i class="fa fa-support fa-5x"></i>
+                                    </div>
+                                    <div class="col-xs-9 text-right">
+                                        <div class="huge"><?php  echo Comment::count_all(); ?></div>
+                                        <div>Comments</div>
+                                    </div>
+                                </div>
+                            </div>
+                            <a href="#">
+                                <div class="panel-footer">
+                                    <span class="pull-left">Total Comments</span>
+                                    <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
+                                    <div class="clearfix"></div>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
 
-//                echo "Photo class static find_all() : <br>";
-//                $photos = Photo::find_all();
-//                foreach ($photos as $photo) {
-//                    echo  $photo->title;
-//                }
-//                $user = new User();
-//                $user->password = "12345";
-//                $user->username = "hahaha";
-//                $user->create();
 
-//                $photo = new Photo();
-//                $photo->title = "Just tests";
-//                $photo->size = 12;
-//                $photo->create();
+                </div> <!--First Row-->
 
-                ?>
+                <div class="row">
+                    <div id="piechart" style="width: 900px; height: 500px;"></div>
+                </div>
 
-                <ol class="breadcrumb">
-                    <li>
-                        <i class="fa fa-dashboard"></i>  <a href="index.html">Dashboard</a>
-                    </li>
-                    <li class="active">
-                        <i class="fa fa-file"></i> Blank Page
-                    </li>
-                </ol>
+
+
+
             </div>
         </div>
         <!-- /.row -->
