@@ -16,6 +16,17 @@ class Session {
         session_start();
         $this->visitor_count();
         $this->check_the_login();
+        $this->check_message();
+    }
+
+    private function check_message() {
+        if (isset($_SESSION['message'])) {
+            $this->message = $_SESSION['message'];
+            unset($_SESSION);
+        } else {
+            $this->message = "";
+        }
+
     }
 
     public function visitor_count() {
@@ -39,20 +50,6 @@ class Session {
         }
         return $msg;
     }
-
-    /**
-     * make sure that message is set
-     */
-    public function check_message() {
-        if (isset($_SESSION['message'])) {
-            $this->message = $_SESSION['message'];
-            unset($_SESSION['message']);
-        } else {
-            $this->message = "";
-        }
-    }
-
-
 
     public function is_signed_in() {
         return $this->signed_in;
@@ -84,3 +81,4 @@ class Session {
 
 
 $session = new Session();
+$message = $session->message();

@@ -71,8 +71,6 @@ class User extends Db_object {
         }
     }
 
-
-
     /**
      * @param $username
      * @param $password
@@ -86,6 +84,16 @@ class User extends Db_object {
 
         $the_result_array =  self::find_this_query($sql);
         return !empty($the_result_array) ? array_shift($the_result_array) : false;
+    }
+
+    public function ajax_save_user_image($user_image, $user_id) {
+        $this->user_image = $user_image;
+        $this->id = $user_id;
+
+    }
+
+    public static function is_admin_id($user_id) {
+        return $user_id == 22;
     }
 
 }

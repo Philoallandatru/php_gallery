@@ -27,6 +27,10 @@ $users = User::find_all();
                     <h1 class="page-header">
                         Users
                     </h1>
+<!--                    <div class="alert alert-success" role="alert">-->
+<!--                        --><?php //echo $message; ?>
+<!--                    </div>-->
+
                     <a class="btn btn-primary" href="add_user.php">Add User</a>
 
                     <div class="col-md-12">

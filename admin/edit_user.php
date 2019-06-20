@@ -1,4 +1,9 @@
-<?php include("includes/header.php"); ?>
+<?php
+
+include("includes/header.php");
+include("includes/photo_library_modal.php");
+?>
+
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 <?php
 
@@ -17,21 +22,22 @@ if (empty($_GET['id'])) {
 
             if (empty($_FILES['user_image'])) {
                 $user->save();
+                redirect("users.php");
+                $session->message("The user has been updated!");
             } else {
                 $user->set_file($_FILES['user_image']);
                 $user->upload_photo();
                 $user->save();
+                $session->message("The user has been updated!");
 
-                redirect("edit_user.php?id={$user->id}");
+//                redirect("edit_user.php?id={$user->id}");
+                redirect("users.php");
             }
         }
     }
 }
-
-
-
-
 ?>
+
     <!-- Navigation -->
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <?php include("includes/top_nav.php") ?>
@@ -49,8 +55,11 @@ if (empty($_GET['id'])) {
                         Add User
                     </h1>
 
-                    <div class="col-md-6">
-                        <img class="img-thumbnail" src="<?php echo $user->image_path_and_placeholder(); ?>" alt="">
+<!--        image and data toggle            -->
+                    <div class="col-md-6 user_image_box" >
+                        <a href="#" data-toggle="modal" data-target="#photo-library">
+                            <img class="img-thumbnail user_img_edit" src="<?php echo $user->image_path_and_placeholder(); ?>" alt="">
+                        </a>
                     </div>
 
                     <form action="edit_user.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
@@ -81,7 +90,7 @@ if (empty($_GET['id'])) {
                             </div>
 
                             <div>
-                                <a class="btn btn-danger" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
+                                <a id="user-id" class="btn btn-danger" href="delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
                             </div>
 
                             <div class="form-group">

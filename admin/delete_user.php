@@ -16,6 +16,7 @@ $id = $_GET['id'];
 
 $user = User::find_by_id($id);
 if ($user) {
+    $session->message("The user has been deleted!");
     $user->delete();
     redirect("users.php");
 } else {

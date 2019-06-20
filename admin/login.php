@@ -11,6 +11,7 @@ if (isset($_POST['submit'])) {
     $password = trim($_POST['password']);
     // method to verify database user
     $user_found = User::verify_user($username, $password);
+//    $is_admin = User::is_admin_id();
 
     if ($user_found) {
         $session->login($user_found);
