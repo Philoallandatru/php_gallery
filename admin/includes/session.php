@@ -4,6 +4,7 @@
  * User: root1
  * Date: 2019-06-17
  * Time: 17:17
+ * @property bool is_signed_in
  */
 
 class Session {
@@ -73,8 +74,9 @@ class Session {
     }
 
     public function logout() {
-        unset( $_SESSION['user_id'] );
+        unset($_SESSION['user_id'] );
         unset($this->user_id);
+        $this->is_signed_in = false;
     }
 
 }

@@ -9,7 +9,7 @@ include("includes/photo_library_modal.php");
 
 
 if (empty($_GET['id'])) {
-    redirect("users.php");
+    redirect("user_page.php");
 } else {
     $id = $_GET['id'];
     $user = User::find_by_id($id);
@@ -22,7 +22,7 @@ if (empty($_GET['id'])) {
 
             if (empty($_FILES['user_image'])) {
                 $user->save();
-                redirect("users.php");
+                redirect("user_page.php");
                 $session->message("The user has been updated!");
             } else {
                 $user->set_file($_FILES['user_image']);
@@ -31,7 +31,7 @@ if (empty($_GET['id'])) {
                 $session->message("The user has been updated!");
 
 //                redirect("edit_user.php?id={$user->id}");
-                redirect("users.php");
+                redirect("user_page.php");
             }
         }
     }
@@ -62,7 +62,7 @@ if (empty($_GET['id'])) {
                         </a>
                     </div>
 
-                    <form action="edit_user.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
+                    <form action="user_edit_profile.php?id=<?php echo $_GET['id']; ?>" method="post" enctype="multipart/form-data">
                         <div class="col-md-6">
                             <div class="form-group" >
                                 <label>User Photo</label>
@@ -98,7 +98,7 @@ if (empty($_GET['id'])) {
                             </div>
 
                             <div>
-                                <a class="btn btn-warning pull-left" href="users.php">Leave</a>
+                                <a class="btn btn-warning pull-left" href="user_page.php">Leave</a>
                             </div>
                         </div>
                     </form>
