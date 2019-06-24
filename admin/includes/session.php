@@ -23,7 +23,7 @@ class Session {
     private function check_message() {
         if (isset($_SESSION['message'])) {
             $this->message = $_SESSION['message'];
-            unset($_SESSION);
+            unset($_SESSION['message']);
         } else {
             $this->message = "";
         }
@@ -53,7 +53,7 @@ class Session {
     }
 
     public function is_signed_in() {
-        return $this->signed_in;
+        return $this->signed_in ;
     }
 
     public function check_the_login() {
@@ -69,6 +69,7 @@ class Session {
     public function login($user) {
         if ($user) {
             $this->user_id = $_SESSION['user_id'] = $user->id;
+            $_SESSION['user_id'] = $user->id;
             $this->signed_in = true;
         }
     }
@@ -76,7 +77,7 @@ class Session {
     public function logout() {
         unset($_SESSION['user_id'] );
         unset($this->user_id);
-        $this->is_signed_in = false;
+        $this->signed_in = false;
     }
 
 }

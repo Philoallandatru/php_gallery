@@ -62,6 +62,7 @@ if (empty($_GET['id'])) {
                                         <?php echo $photo->description; ?>
                                         </textarea>
                                 </div>
+
                             </div>
 
                             <div class="col-md-4" >

@@ -1,5 +1,8 @@
 <?php include("includes/header.php"); ?>
+<?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
+
 <?php
+$is_admin = User::is_admin_id($session->user_id);
 $page = !empty($_GET['page']) ? (int)$_GET['page'] : 1;
 $items_per_page = 8;
 $items_total_count = Photo::count_all();
@@ -9,6 +12,12 @@ $sql = "SELECT * FROM photos LIMIT {$items_per_page} OFFSET {$paginate->offset()
 $photos = Photo::find_by_query($sql);
 
 ?>
+
+<!-- Navigation -->
+    <?php include("./includes/navigation.php"); ?>
+
+    <!-- Page Content -->
+    <div class="container">
 
         <div class="row">
 
@@ -49,15 +58,13 @@ $photos = Photo::find_by_query($sql);
                     </ul>
                 </div>
 
-
             </div>
 
             <!-- Blog Sidebar Widgets Column -->
             <div class="col-md-3">
 
                  <?php include("includes/sidebar.php"); ?>
+            </div>
 
-        </div>
         <!-- /.row -->
-
         <?php include("includes/footer.php"); ?>

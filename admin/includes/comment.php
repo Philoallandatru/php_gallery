@@ -9,18 +9,19 @@
 
 class Comment extends Db_object {
     protected static $db_table = "comments";
-    protected static $db_table_fields = array('photo_id', 'author', 'body');
-    public $id;
+    protected static $db_table_fields = array('photo_id', 'author', 'body', 'user_id');
+    public $user_id;
     public $photo_id;
     public $author;
     public $body;
 
-    public static function create_comment($photo_id, $author="John", $body="") {
+    public static function create_comment($photo_id, $author="John", $body="", $user_id=22) {
         if (!empty($photo_id) && !empty($author) && !empty($body))  {
             $comment = new Comment();
             $comment->photo_id = $photo_id;
             $comment->author = $author;
             $comment->body = $body;
+            $comment->user_id = $user_id;
             return $comment;
         } else {
             return false;

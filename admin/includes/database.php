@@ -17,6 +17,12 @@ class Database {
         }
     }
 
+    public function num_rows($sql) {
+        $result = $this->connection->query($sql);
+        $this->confirm_query($result);
+        return mysqli_num_rows($result);
+    }
+
     private function confirm_query($result) {
         if (!$result) {
             die("Query failed") . $this->connection->error();

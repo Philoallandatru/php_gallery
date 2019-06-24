@@ -1,19 +1,27 @@
 <?php include("includes/header.php"); ?>
 <?php
 
-$user = new User();
+$updated = false;
 if (isset($_POST['register'])) {
-    if ($user) {
-        $user->username = $_POST['username'];
-        $user->lastname = $_POST['lastname'];
-        $user->firstname = $_POST['firstname'];
-        $user->password = $_POST['password'];
+    $user = new User();
+    $user->username = $_POST['username'];
+    $user->lastname = $_POST['lastname'];
+    $user->firstname = $_POST['firstname'];
+    $user->password = $_POST['password'];
 
+
+    if (User::duplicated_username($user->username) <= 0) {
         $user->set_file($_FILES['user_image']);
         $user->upload_photo();
+        $session->message = "The user {$user->username} has been added";
+        $user->save();
+        $updated = true;
+    } else {
+//            echo "<sciprt>"
+        $updated = true;
+        $session->message = "用户名重复！";
     }
 }
-redirect("login.php");
 ?>
 
     <!--    content     -->
@@ -25,6 +33,13 @@ redirect("login.php");
                     <h1 class="page-header">
                         Register
                     </h1>
+
+                    <?php if ($updated)  { ?>
+                        <div class="alert alert-danger" role="alert">
+                            <?php    echo $session->message; ?>
+                        </div>
+                    <?php  }  ?>
+
 
 
                     <form action="" method="post" enctype="multipart/form-data">
@@ -59,6 +74,10 @@ redirect("login.php");
                             </div>
                         </div>
                     </form>
+
+                    <a class="btn btn-warning btn-lg" href="login.php">
+                        Back
+                    </a>
 
 
 

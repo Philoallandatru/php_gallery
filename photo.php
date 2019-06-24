@@ -1,5 +1,6 @@
 <?php
 require_once("admin/includes/init.php");
+$is_admin = User::is_admin_id($session->user_id);
 
 if (empty($_GET['id'])) {
     redirect("index.php");
@@ -10,8 +11,9 @@ $photo = Photo::find_by_id($_GET['id']);
 if (isset($_POST['submit'])) {
     $author = trim($_POST['author']);
     $body = trim($_POST['body']);
+    $user_id = $session->user_id;
 
-    $new_comment = Comment::create_comment($photo->id, $author, $body);
+    $new_comment = Comment::create_comment($photo->id, $author, $body, $user_id);
     if ($new_comment && $new_comment->save()) {
         redirect("photo.php?id={$photo->id}");
     } else {
@@ -27,6 +29,11 @@ $comments = Comment::find_the_comments($photo->id);
 ?>
 
 <?php include("includes/header.php"); ?>
+<!-- Navigation -->
+<?php include("./includes/navigation.php"); ?>
+
+<!-- Page Content -->
+<div class="container">
 
             <!-- Blog Post Content Column -->
             <div class="col-lg-8">

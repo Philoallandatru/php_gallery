@@ -33,8 +33,4 @@ require_once("admin/includes/init.php");
 
 
 
-    <!-- Navigation -->
-<?php include("navigation.php"); ?>
 
-    <!-- Page Content -->
-    <div class="container">

@@ -3,7 +3,12 @@
 require_once("includes/header.php");
 
 if ($session->is_signed_in()) {
-    redirect("index.php");
+    $is_admin = User::is_admin_id($session->user_id);
+    if ($is_admin) {
+        redirect("index.php");
+    } else {
+        redirect("user_page.php");
+    }
 }
 
 if (isset($_POST['submit'])) {

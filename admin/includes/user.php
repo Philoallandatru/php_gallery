@@ -96,4 +96,12 @@ class User extends Db_object {
         return $user_id == 22;
     }
 
+    public static function duplicated_username($username) {
+        global $database;
+        $sql = "SELECT * FROM users WHERE username = '$username'";
+        return $database->num_rows($sql);
+    }
+
+
 }
+

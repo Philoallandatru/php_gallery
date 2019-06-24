@@ -2,7 +2,7 @@
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 
 <?php
-$user_id = $_SESSION['user_id'];
+$user_id = $session->user_id;
 $sql = "SELECT * FROM photos WHERE user_id = {$user_id}";
 $photos = Photo::find_by_query($sql);
 
@@ -14,7 +14,7 @@ $photos = Photo::find_by_query($sql);
         <?php include("includes/top_nav.php") ?>
 
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <?php  include("includes/side_nav.php"); ?>
+        <?php  include("includes/user_side_nav.php"); ?>
 
         <!-- /.navbar-collapse -->
 

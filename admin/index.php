@@ -5,6 +5,7 @@
 if (!$session->is_signed_in()) {
     redirect("login.php");
 }
+
 ?>
 
         <!-- Navigation -->
@@ -20,7 +21,24 @@ if (!$session->is_signed_in()) {
 
         </nav>
 <?php
+//echo "session->user_id: " .$session->user_id;
+//echo "session->is_signed_in: " . $session->is_signed_in();
+
+
+//global $database;
+//$username = "Pyra";
+//$sql = "SELECT * FROM users WHERE username = " . $username;
+//$result = mysqli_query($database->connection, $sql);
+
+//echo "User number: " . User::duplicated_username("Pyra");
+//echo User::duplicated_username("Pyra");
+
 include("includes/admin_content.php");
+?>
+
+<?php
+
+
 ?>
 
         <!-- /#page-wrapper -->

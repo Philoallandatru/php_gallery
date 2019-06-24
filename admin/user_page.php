@@ -1,4 +1,5 @@
 <?php include("includes/header.php"); ?>
+<?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 
 <!-- if not signed, redirect to the login.php page  -->
 <?php
@@ -10,6 +11,10 @@ if (isset($_GET['id'])) {
     $user = User::find_by_id($_GET['id']);
 }
 
+$user = User::find_by_id($session->user_id);
+echo "user_id: " . $session->user_id . "<br>";
+echo "is_signed_in(): " . $session->is_signed_in() . "<br>";
+echo "session-user_id: " . $_SESSION['user_id'];
 
 ?>
 
@@ -40,8 +45,8 @@ if (isset($_GET['id'])) {
                 <div class="col-md-12">
                     <table class="table table-hover">
                         <thead>
-                        <tr>
-                            <th>ID</th>
+                        <tr class="h3">
+                            <th class="">ID</th>
                             <th>Photo</th>
                             <th>Username</th>
                             <th>First Name</th>
@@ -55,17 +60,13 @@ if (isset($_GET['id'])) {
                                 <td><img class="img-thumbnail user_image" src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""></td>
                                 <td><?php echo $user->username; ?>
                                     <div class="action_link">
-                                        <a href="./delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
                                         <a href="./user_edit_profile.php?id=<?php echo $user->id; ?>">Edit</a>
-                                        <a>View</a>
                                     </div>
                                 </td>
                                 <td><?php echo $user->firstname; ?></td>
                                 <td><?php echo $user->lastname; ?></td>
                             </tr>
-                        <tr></tr>
-                        <tr></tr>
-                        <tr></tr>
+
                         </tbody>
                     </table>
                 </div>
