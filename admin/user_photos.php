@@ -2,6 +2,9 @@
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 
 <?php
+
+# 这个页面显示这个用户上传了哪些照片
+
 $user_id = $session->user_id;
 $sql = "SELECT * FROM photos WHERE user_id = {$user_id}";
 $photos = Photo::find_by_query($sql);

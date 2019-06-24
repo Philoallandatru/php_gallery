@@ -1,20 +1,12 @@
 <?php include("includes/header.php"); ?>
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
-
+<!--  用户的主页 -->
 <!-- if not signed, redirect to the login.php page  -->
+
+
 <?php
-if (!$session->is_signed_in()) {
-    redirect("login.php");
-}
-
-if (isset($_GET['id'])) {
-    $user = User::find_by_id($_GET['id']);
-}
-
+# 根据用户的id构建这个用户对象
 $user = User::find_by_id($session->user_id);
-echo "user_id: " . $session->user_id . "<br>";
-echo "is_signed_in(): " . $session->is_signed_in() . "<br>";
-echo "session-user_id: " . $_SESSION['user_id'];
 
 ?>
 
@@ -39,7 +31,7 @@ echo "session-user_id: " . $_SESSION['user_id'];
         <div class="row">
             <div class="col-lg-12">
                 <h1 class="page-header">
-                    User
+                    我的主页
                 </h1>
 
                 <div class="col-md-12">
@@ -47,14 +39,14 @@ echo "session-user_id: " . $_SESSION['user_id'];
                         <thead>
                         <tr class="h3">
                             <th class="">ID</th>
-                            <th>Photo</th>
-                            <th>Username</th>
-                            <th>First Name</th>
-                            <th>Last Name</th>
+                            <th>照片</th>
+                            <th>用户名</th>
+                            <th>名</th>
+                            <th>姓</th>
                         </tr>
                         </thead>
                         <tbody>
-
+<!--   显示这个用户的信息（通过echo这个用户的性质）  -->
                             <tr>
                                 <td><?php echo $user->id; ?></td>
                                 <td><img class="img-thumbnail user_image" src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""></td>

@@ -12,7 +12,7 @@
         <li>
             <a href="comments.php"><i class="fa fa-fw fa-edit"></i> Comments</a>
         </li>
-        <li class="active">
+        <li class="">
             <a href="photos.php"><i class="fa fa-fw fa-table"></i> Photos</a>
         </li>
 

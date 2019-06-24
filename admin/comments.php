@@ -41,7 +41,7 @@ $comments = comment::find_all();
                             <tbody>
                             <?php foreach ($comments as $comment) : ?>
                                 <tr>
-                                    <td><?php echo $comment->id; ?></td>
+                                    <td><?php echo $comment->user_id; ?></td>
                                     <td><?php echo $comment->photo_id; ?></td>
                                     <td><?php echo $comment->author; ?>
                                         <div class="action_link">

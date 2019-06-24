@@ -31,7 +31,7 @@ if (isset($_POST['register'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Register
+                        注册
                     </h1>
 
                     <?php if ($updated)  { ?>
@@ -45,27 +45,27 @@ if (isset($_POST['register'])) {
                     <form action="" method="post" enctype="multipart/form-data">
                         <div class="col-md-6 col-md-offset-3">
                             <div class="form-group" >
-                                <label>User Photo</label>
+                                <label>用户照片</label>
                                 <input type="file" name="user_image" >
                             </div>
 
                             <div class="form-group">
-                                <label for="username">Username</label>
+                                <label for="username">用户名</label>
                                 <input type="text"  name="username" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label for="firstname">First Name</label>
+                                <label for="firstname">名</label>
                                 <input type="text"  name="firstname" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label for="lastname">lastname</label>
+                                <label for="lastname">姓</label>
                                 <input type="text"  name="lastname" class="form-control">
                             </div>
 
                             <div class="form-group">
-                                <label for="password">Password</label>
+                                <label for="password">密码</label>
                                 <input type="password"  name="password" class="form-control">
                             </div>
 
@@ -76,7 +76,7 @@ if (isset($_POST['register'])) {
                     </form>
 
                     <a class="btn btn-warning btn-lg" href="login.php">
-                        Back
+                        回到登录页面
                     </a>
 
 

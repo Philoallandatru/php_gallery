@@ -40,15 +40,14 @@ if (isset($_POST['submit'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Upload
-                        <small>Subheading</small>
+                        上传
                     </h1>
 
                     <?php echo $message; ?>
                     <div class="col-md-6">
                         <form action="upload.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label>Title
+                                <label>标题
                                 <input type="text" name="title" class="form-control">
                                 </label>
                             </div>

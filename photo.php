@@ -1,3 +1,8 @@
+<?php include("includes/header.php"); ?>
+<?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
+
+<!--  这个页面实现一张照片的单独页面 -->
+
 <?php
 require_once("admin/includes/init.php");
 $is_admin = User::is_admin_id($session->user_id);
@@ -8,6 +13,7 @@ if (empty($_GET['id'])) {
 
 $photo = Photo::find_by_id($_GET['id']);
 
+# 处理评论的提交
 if (isset($_POST['submit'])) {
     $author = trim($_POST['author']);
     $body = trim($_POST['body']);
@@ -24,11 +30,12 @@ if (isset($_POST['submit'])) {
     $body = "";
 }
 
+# 找出所有的评论，用于显示在照片的底下
 $comments = Comment::find_the_comments($photo->id);
 
 ?>
 
-<?php include("includes/header.php"); ?>
+
 <!-- Navigation -->
 <?php include("./includes/navigation.php"); ?>
 
@@ -40,6 +47,7 @@ $comments = Comment::find_the_comments($photo->id);
 
                 <!-- Blog Post -->
 
+<!--      这里显示照片的种种信息          -->
                 <!-- Title -->
                 <h1><?php echo $photo->title; ?></h1>
 
@@ -52,7 +60,7 @@ $comments = Comment::find_the_comments($photo->id);
                 <hr>
 
                 <!-- Date/Time -->
-                <p><span class="glyphicon glyphicon-time"></span> Posted on August 24, 2013 at 9:00 PM</p>
+                <p><span class="glyphicon glyphicon-time"></span> Posted on June 26th, 2019 at 9:00 PM</p>
 
                 <hr>
 
@@ -70,18 +78,19 @@ $comments = Comment::find_the_comments($photo->id);
                 <!-- Blog Comments -->
 
                 <!-- Comments Form -->
+<!--          这是评论提交的表格      -->
                 <div class="well">
-                    <h4>Leave a Comment:</h4>
+                    <h4>留下评论:</h4>
                     <form role="form" method="post">
                         <div class="form-group">
-                            <label>Author</label>
+                            <label>作者名</label>
                             <input name="author" type="text" class="form-control">
                         </div>
                         <div class="form-group">
-                            <label>Comment Body</label>
+                            <label>评论</label>
                             <textarea class="form-control" rows="3" name="body"></textarea>
                         </div>
-                        <button type="submit" name="submit" class="btn btn-primary">Submit</button>
+                        <button type="submit" name="submit" class="btn btn-primary">提交</button>
                     </form>
                 </div>
 
@@ -89,6 +98,7 @@ $comments = Comment::find_the_comments($photo->id);
 
                 <!-- Posted Comments -->
 
+<!--         这里显示所有的评论       -->
                 <!-- Comment -->
                 <?php foreach ($comments as $comment): ?>
                 <div class="media">
@@ -97,7 +107,7 @@ $comments = Comment::find_the_comments($photo->id);
                     </a>
                     <div class="media-body">
                         <h4 class="media-heading"><?php echo $comment->author; ?>
-                            <small>August 25, 2014 at 9:30 PM</small>
+                            <small>July 29th, 2019 at 9:30 PM</small>
                         </h4>
                         <?php echo $comment->body; ?>
 
