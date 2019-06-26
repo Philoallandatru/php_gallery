@@ -16,6 +16,7 @@ class Comment extends Db_object {
     public $photo_id;
     public $author;
     public $body;
+    public $id;
 
     /**
      * @param $photo_id - 照片id

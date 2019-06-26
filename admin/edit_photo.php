@@ -1,6 +1,7 @@
 <?php include("includes/header.php"); ?>
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 <?php
+$is_admin = User::is_admin_id($session->user_id);
 
 if (empty($_GET['id'])) {
     redirect("photos.php");
@@ -25,7 +26,13 @@ if (empty($_GET['id'])) {
     <nav class="navbar navbar-inverse navbar-fixed-top" role="navigation">
         <?php include("includes/top_nav.php") ?>
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <?php  include("includes/side_nav.php"); ?>
+        <?php
+        if ($is_admin) {
+            include_once("includes/side_nav.php");
+        } else {
+            include_once("includes/user_side_nav.php");
+        }
+        ?>
         <!-- /.navbar-collapse -->
     </nav>
 <!--    content     -->
@@ -75,16 +82,16 @@ if (empty($_GET['id'])) {
                                                 <span class="glyphicon glyphicon-calendar"></span> Uploaded on: April 22, 2030 @ 5:26
                                             </p>
                                             <p class="text ">
-                                                Photo Id: <span class="data photo_id_box">34</span>
+                                                Photo Id: <span class="data photo_id_box"><?php echo $photo->id; ?></span>
                                             </p>
                                             <p class="text">
-                                                Filename: <span class="data">image.jpg</span>
+                                                文件名: <span class="data"><?php echo $photo->filename; ?></span>
                                             </p>
                                             <p class="text">
-                                                File Type: <span class="data">JPG</span>
+                                                文件类型: <span class="data"><?php echo $photo->type; ?></span>
                                             </p>
                                             <p class="text">
-                                                File Size: <span class="data">3245345</span>
+                                                文件大小: <span class="data"><?php echo $photo->size; ?></span>
                                             </p>
                                         </div>
                                         <div class="info-box-footer clearfix">

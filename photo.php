@@ -12,6 +12,8 @@ if (empty($_GET['id'])) {
 }
 
 $photo = Photo::find_by_id($_GET['id']);
+$author_id = $photo->user_id;
+$author_name = User::find_by_id($author_id)->username;
 
 # 处理评论的提交
 if (isset($_POST['submit'])) {
@@ -53,7 +55,7 @@ $comments = Comment::find_the_comments($photo->id);
 
                 <!-- Author -->
                 <p class="lead">
-                    by <a href="#"><?php echo "author"; ?></a>
+                    by <a href="#"><?php echo $author_name; ?></a>
 
                 </p>
 
@@ -71,7 +73,7 @@ $comments = Comment::find_the_comments($photo->id);
 
                 <!-- Post Content -->
                 <p class="lead"><?php echo $photo->caption; ?></p>
-                <p><?php echo $photo->description; ?></p>
+                <?php echo  html_entity_decode($photo->description) ; ?>
 
                 <hr>
 

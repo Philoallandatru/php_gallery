@@ -39,7 +39,7 @@
                 <!-- Side Widget Well -->
                 <div class="well">
                     <a href="admin/logout.php" class="btn btn-lg btn-danger">登出</a>
-                    <a href="/admin/register.php" class="btn btn-warning">登录</a>
+                    <a href="admin/register.php" class="btn btn-warning">注册</a>
                 </div>
 
             </div>

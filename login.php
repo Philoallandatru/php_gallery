@@ -42,6 +42,9 @@ if (isset($_POST['submit'])) {
         <!-- Page Heading -->
         <div class="row">
             <div class="col-lg-3 col-lg-offset-3">
+                <h1 class="display-1 text-center text-capitalize page-header text-danger">
+                    Photo Gallery
+                </h1>
                 <h1 class="page-header text-center">
                     登录
                 </h1>

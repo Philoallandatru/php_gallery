@@ -51,30 +51,29 @@ if (isset($_POST['submit'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Upload
-                        <small>Subheading</small>
+                        上传我的照片
                     </h1>
 
                     <?php echo $message; ?>
                     <div class="col-md-6">
                         <form action="user_upload.php" method="post" enctype="multipart/form-data">
                             <div class="form-group">
-                                <label for="title">Title</label>
+                                <label for="title">标题</label>
                                 <input type="text" name="title" class="form-control">
                             </div>
                             <div class="form-group">
                                 <input type="file" name="file_upload" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="caption">Caption</label>
+                                <label for="caption">说明</label>
                                 <input type="text"  name="caption" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label for="alternate_text">Alternate Text</label>
+                                <label for="alternate_text">附注</label>
                                 <input type="text"  name="alternate_text" class="form-control">
                             </div>
                             <div class="form-group">
-                                <label>Description</label>
+                                <label>描述</label>
                                 <textarea class="form-control" name="description" id="" cols="30" rows="10">
                                         </textarea>
                             </div>

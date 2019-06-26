@@ -14,13 +14,7 @@ $comments = Comment::find_the_comments($_GET['id']);
         <?php include("includes/top_nav.php") ?>
 
         <!-- Sidebar Menu Items - These collapse to the responsive navigation menu on small screens -->
-        <?php
-        if (User::is_admin_id($session->user_id)) {
-            include_once("includes/side_nav.php");
-        } else {
-            include_once("includes/user_side_nav.php");
-        }
-        ?>
+        <?php  include("includes/side_nav.php"); ?>
 
         <!-- /.navbar-collapse -->
 
