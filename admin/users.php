@@ -31,17 +31,17 @@ $users = User::find_all();
 <!--                        --><?php //echo $message; ?>
 <!--                    </div>-->
 
-                    <a class="btn btn-primary" href="add_user.php">Add User</a>
+                    <a class="btn btn-primary" href="add_user.php">添加用户r</a>
 
                     <div class="col-md-12">
                         <table class="table table-hover">
                             <thead>
                             <tr>
                                 <th>ID</th>
-                                <th>Photo</th>
-                                <th>Username</th>
-                                <th>First Name</th>
-                                <th>Last Name</th>
+                                <th>照片</th>
+                                <th>用户名</th>
+                                <th>名</th>
+                                <th>姓</th>
                             </tr>
                             </thead>
                             <tbody>
@@ -51,8 +51,8 @@ $users = User::find_all();
                                     <td><img class="img-thumbnail user_image" src="<?php echo $user->image_path_and_placeholder(); ?>" alt=""></td>
                                     <td><?php echo $user->username; ?>
                                         <div class="action_link">
-                                            <a href="./delete_user.php?id=<?php echo $user->id; ?>">Delete</a>
-                                            <a href="./edit_user.php?id=<?php echo $user->id; ?>">Edit</a>
+                                            <a href="./delete_user.php?id=<?php echo $user->id; ?>">删除</a>
+                                            <a href="./edit_user.php?id=<?php echo $user->id; ?>">编辑</a>
                                         </div>
                                     </td>
                                     <td><?php echo $user->firstname; ?></td>

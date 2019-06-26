@@ -35,13 +35,12 @@ if (empty($_GET['id'])) {
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Edit Photos
-                        <small>post detail...</small>
+                        编辑照片
                     </h1>
                         <form action="edit_photo.php?id=<?php echo $_GET['id']; ?>" method="post">
                             <div class="col-md-8">
                                 <div class="form-group">
-                                    <label for="title">Title</label>
+                                    <label for="title">标题</label>
                                         <input type="text"  name="title" class="form-control" value="<?php  echo $photo->title ?>">
                                 </div>
                                 <div class="form-group">
@@ -49,15 +48,15 @@ if (empty($_GET['id'])) {
                                 </div>
 
                                 <div class="form-group">
-                                    <label for="caption">Caption</label>
+                                    <label for="caption">说明</label>
                                         <input type="text"  name="caption" class="form-control" value="<?php echo $photo->caption; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label for="alternate_text">Alternate Text</label>
+                                    <label for="alternate_text">附注</label>
                                         <input type="text"  name="alternate_text" class="form-control" value="<?php echo $photo->alternate_text; ?>">
                                 </div>
                                 <div class="form-group">
-                                    <label>Description</label>
+                                    <label>描述</label>
                                         <textarea class="form-control" name="description" id="" cols="30" rows="10">
                                         <?php echo $photo->description; ?>
                                         </textarea>

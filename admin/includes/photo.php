@@ -6,6 +6,7 @@
  * Time: 23:05
  */
 
+// 从Dd_object里继承了查询，创建和删改的操作，
 class Photo extends Db_object {
 
     protected static $db_table = "photos";

@@ -2,7 +2,7 @@
 
             <!-- Blog Search Well -->
                 <div class="well">
-                    <h4>Photo Search</h4>
+                    <h4>搜索照片</h4>
                     <div class="input-group">
                         <input type="text" class="form-control">
                         <span class="input-group-btn">
@@ -38,8 +38,8 @@
 
                 <!-- Side Widget Well -->
                 <div class="well">
-                    <a href="admin/logout.php" class="btn btn-lg btn-danger">Logout</a>
-                    <a href="/admin/register.php" class="btn btn-warning">Register</a>
+                    <a href="admin/logout.php" class="btn btn-lg btn-danger">登出</a>
+                    <a href="/admin/register.php" class="btn btn-warning">登录</a>
                 </div>
 
             </div>

@@ -1,6 +1,5 @@
 <!--  这个页面给用户提供上传文件的机会  -->
 
-
 <?php include("includes/header.php"); ?>
 <?php if (!$session->is_signed_in()) {redirect("login.php");} ?>
 

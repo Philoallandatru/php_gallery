@@ -25,7 +25,7 @@ $comments = comment::find_all();
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        All Comments
+                        所有评论
                     </h1>
 
                     <div class="col-md-12">
@@ -34,8 +34,8 @@ $comments = comment::find_all();
                             <tr>
                                 <th>ID</th>
                                 <th>Photo ID</th>
-                                <th>Author</th>
-                                <th>Body</th>
+                                <th>评论者使用名</th>
+                                <th>评论</th>
                             </tr>
                             </thead>
                             <tbody>

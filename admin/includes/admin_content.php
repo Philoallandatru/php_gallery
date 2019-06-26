@@ -7,7 +7,7 @@
             <div class="col-lg-12">
                 <h1 class="page-header">
                     Admin
-                    <small>Dashboard</small>
+                    <small>仪表盘</small>
                 </h1>
 
                 <div class="row">
@@ -44,13 +44,13 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php echo Photo::count_all(); ?></div>
-                                        <div>Photos</div>
+                                        <div>照片</div>
                                     </div>
                                 </div>
                             </div>
                             <a href="photos.php">
                                 <div class="panel-footer">
-                                    <span class="pull-left">Total Photos in Gallery</span>
+                                    <span class="pull-left">Gallery的相片总数</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -67,13 +67,13 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php echo User::count_all(); ?></div>
-                                        <div>Users</div>
+                                        <div>用户</div>
                                     </div>
                                 </div>
                             </div>
                                 <a href="users.php">
                                 <div class="panel-footer">
-                                    <span class="pull-left">Total Users</span>
+                                    <span class="pull-left">总用户数</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
@@ -90,13 +90,13 @@
                                     </div>
                                     <div class="col-xs-9 text-right">
                                         <div class="huge"><?php  echo Comment::count_all(); ?></div>
-                                        <div>Comments</div>
+                                        <div>评论</div>
                                     </div>
                                 </div>
                             </div>
                             <a href="comments.php">
                                 <div class="panel-footer">
-                                    <span class="pull-left">Total Comments</span>
+                                    <span class="pull-left">总评论数</span>
                                     <span class="pull-right"><i class="fa fa-arrow-circle-right"></i></span>
                                     <div class="clearfix"></div>
                                 </div>
