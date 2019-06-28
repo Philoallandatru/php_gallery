@@ -32,7 +32,7 @@ $photos = Photo::find_by_query($sql);
             <div class="row">
                 <div class="col-lg-12">
                     <h1 class="page-header">
-                        Photos I Upload
+                        我上传的照片
                     </h1>
 
 <!--                    <div class="alert alert-success" role="alert">-->
@@ -43,12 +43,12 @@ $photos = Photo::find_by_query($sql);
                         <table class="table table-hover">
                             <thead>
                                 <tr>
-                                    <th>Photo</th>
+                                    <th>照片</th>
                                     <th>ID</th>
-                                    <th>File Name</th>
-                                    <th>Title</th>
-                                    <th>Size</th>
-                                    <th>Comments</th>
+                                    <th>文件名</th>
+                                    <th>标题</th>
+                                    <th>大小</th>
+                                    <th>评论数</th>
                                 </tr>
                             </thead>
                             <tbody>

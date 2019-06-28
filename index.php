@@ -44,7 +44,7 @@ $photos = Photo::find_by_query($sql);
                         <?php
                         if ($paginate->page_total() > 1) { # 如果总页数多于一页则要分页显示
                             if ($paginate->has_previous()) { # 有上一页则要显示上一页的这个链接
-                                echo "<li class='previous'><a href='index.php?page={$paginate->previous()}'>Previous</a></li>";
+                                echo "<li class='previous'><a href='index.php?page={$paginate->previous()}'>上一页</a></li>";
                             }
 
                             # 这里显示1，2 3。。。
@@ -57,7 +57,7 @@ $photos = Photo::find_by_query($sql);
                             }
 
                             if ($paginate->has_next()) {
-                                echo "<li class='next'><a href='index.php?page={$paginate->next()}'>Next</a></li>";
+                                echo "<li class='next'><a href='index.php?page={$paginate->next()}'>下一页</a></li>";
                             }
                         }
                         ?>

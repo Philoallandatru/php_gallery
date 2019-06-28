@@ -54,7 +54,7 @@ if (isset($_POST['submit'])) {
                     echo " <div class='alert alert-danger'>$the_message</div>";
                 }
                 ?>
-    <form id="login-id" action="" method="post">
+    <form id="" action="" method="post">
         <div class="form-group">
             <label for="username">用户名</label>
             <input type="text" class="form-control" name="username" value="<?php echo htmlentities($username); ?>" >
